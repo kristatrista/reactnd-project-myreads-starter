@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
-
+import * as BooksAPI from './BooksAPI'
 import BookShelf from './BookShelf'
 
 class MainPage extends React.Component {
-  render(){
+  state = {
+    books: []
+  };
+  componentDidMount() {
+    BooksAPI.getAll().then(books => {
+      this.setState({
+        books: books
+      });
+    });
+  }
 
+  render(){
+console.log('BOOKS', this.state.books);
     const shelfTitle ="";
+    const newVarBooks = this.state.books;
+    console.log('newVarBooks', newVarBooks);
     return(
       <div>
       <div className="list-books">
@@ -14,9 +27,19 @@ class MainPage extends React.Component {
         </div>
         <div className="list-books-content">
           <div>
-          <BookShelf bookList = {this.props.books} shelfTitle= {"Currently Reading"}/>
-          <BookShelf shelfTitle= {"Want to Read"}/>
-          <BookShelf shelfTitle= {"Read"}/>
+
+          <BookShelf
+          books={newVarBooks}
+          />
+
+          <BookShelf
+          shelfTitle= {"Want to Read"}
+          />
+
+          <BookShelf
+           shelfTitle= {"Read"}
+           />
+
           </div>
         </div>
         <div className="open-search">

@@ -5,8 +5,9 @@ import React, { Component } from 'react'
 class Book extends React.Component {
 
   render(){
+    console.log('bookcompSuccess', this.props.books)
     return(
-      <div>
+      <li>
       <div className="book">
         <div className="book-top">
           <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: '' }}></div>
@@ -23,7 +24,7 @@ class Book extends React.Component {
         <div className="book-title"></div>
         <div className="book-authors"> </div>
       </div>
-      </div>
+      </li>
     )
   }
 };

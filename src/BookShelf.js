@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Book from './Book'
 
 class BookShelf extends React.Component {
+
   render(){
-          console.log(this.props.bookList);
+ console.log('shelfSuccess', this.props.books)
      const shelfTitle ="Currently Reading";
     return(
         <div>
@@ -12,12 +13,14 @@ class BookShelf extends React.Component {
           <h2 className="bookshelf-title">{this.props.shelfTitle}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
-              <li>
-                <Book />
-              </li>
-              <li>
-                <Book />
-              </li>
+
+
+                <Book books={this.props.books}
+
+  
+
+                />
+
             </ol>
           </div>
         </div>
