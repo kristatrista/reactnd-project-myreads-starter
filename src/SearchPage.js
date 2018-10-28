@@ -33,7 +33,7 @@ class SearchPage extends React.Component {
     }
 
   render(){
-  
+
     return(
       <div className="search-books">
                 <div className="search-books-bar">
@@ -55,6 +55,7 @@ class SearchPage extends React.Component {
                     <li key={searchedBook.id}>
                     <Book
                     book={searchedBook}
+                    moveShelf = {this.props.moveShelf}
                     />
                     </li>
                   ))
