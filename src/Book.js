@@ -5,9 +5,9 @@ import React, { Component } from 'react'
 class Book extends React.Component {
 
   render(){
-  let currentShelf ='none';
+
   let displayedThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail: '';
-  let defaultValue ;
+
     return(
       <div>
       <div className="book">
@@ -19,7 +19,7 @@ class Book extends React.Component {
                 this.props.book, event.target.value
               )}
 
-              value={this.props.book.shelf}
+              value={this.props.currentShelf}
             >
               <option value="move" disabled>Move to...</option>
               <option value="currentlyReading">Currently Reading</option>

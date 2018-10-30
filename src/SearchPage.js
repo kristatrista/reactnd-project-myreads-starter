@@ -35,7 +35,7 @@ class SearchPage extends React.Component {
   render(){
     console.log('MAINBOOKS', this.props.books);
     console.log('SEARCHEDBOOKS',this.state.searchedBooks);
-    let searchedBooks = this.state.searchedBooks;
+
     return(
       <div className="search-books">
                 <div className="search-books-bar">
@@ -56,24 +56,24 @@ class SearchPage extends React.Component {
                 <div className="search-books-results">
                   <ol className="books-grid">
                   {
-                    searchedBooks.map(searchedBook => {
-                      let shelf = 'none'
+                    this.state.searchedBooks.map(searchedBook => {
+                      let shelf='none';
                       this.props.books.map(book =>{
-                          book.id === searchedBook.id ? shelf = book.shelf : 'none';
+                              book.id === searchedBook.id ? shelf = book.shelf : 'none';
                       }
                       )
                       return(
                         <li key={searchedBook.id}>
                         <Book
-
                         moveShelf ={this.props.moveShelf}
                         book={searchedBook}
-                        shelf={shelf}
+                        currentShelf={shelf}
                         />
                         </li>
                       )
                     })
                 }
+
                   </ol>
                 </div>
               </div>

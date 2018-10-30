@@ -9,10 +9,8 @@ class MainPage extends React.Component {
   };
 
 
-
   render(){
 console.log('BOOKS', this.props.books);
-    const shelfTitle ="";
     const books = this.props.books;
     console.log('books', books);
     return(
@@ -34,7 +32,7 @@ console.log('BOOKS', this.props.books);
                       <Book
                       book={book}
                       moveShelf ={this.props.moveShelf}
-                      currentShelf={book.shelf}
+                      let currentShelf='currentlyReading'
                       />
                       </li>
                   ))
@@ -53,7 +51,7 @@ console.log('BOOKS', this.props.books);
                     <Book
                       book={book}
                       moveShelf ={this.props.moveShelf}
-                      currentShelf={book.shelf}
+                      currentShelf='wantToRead'
                     />
                     </li>
                 ))
@@ -72,7 +70,8 @@ console.log('BOOKS', this.props.books);
                     <Book
                     book={book}
                     moveShelf ={this.props.moveShelf}
-                    currentShelf={book.shelf}
+                    currentShelf='read'
+
                     />
                     </li>
                 ))
