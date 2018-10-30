@@ -1,4 +1,5 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import MainPage from './MainPage'
@@ -29,13 +30,22 @@ class BooksApp extends React.Component {
 
     return (
       <div className="app">
+      <Route exact path="/" render={() =>(
+        <MainPage
+            books ={this.state.books}
+            moveShelf ={this.moveShelf}
+            />
+      )} />
 
-      <MainPage
-          books ={this.state.books}
-          moveShelf ={this.moveShelf}
+      <Route exact path="/search" render={() =>(
+        <SearchPage
+        moveShelf = {this.moveShelf}
+        books={this.state.books}
+        manageBooks ={this.manageBooks}
           />
-          <SearchPage
-          moveShelf = {this.moveShelf} />
+      )} />
+
+
       </div>
     )
   }

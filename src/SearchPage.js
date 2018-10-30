@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import Book from './Book'
 import * as BooksAPI from './BooksAPI'
 
@@ -18,7 +19,6 @@ class SearchPage extends React.Component {
 }
 
   updateSearchedBooks = (query) => {
-
     if(query) {
       BooksAPI.search(query).then((searchedBooks) =>{
         if(searchedBooks.error) {
@@ -33,11 +33,16 @@ class SearchPage extends React.Component {
     }
 
   render(){
-
+    console.log('MAINBOOKS', this.props.books);
+    console.log('SEARCHEDBOOKS',this.state.searchedBooks);
+    let searchedBooks = this.state.searchedBooks;
     return(
       <div className="search-books">
                 <div className="search-books-bar">
-                  <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+                  <Link
+                  to="/"
+                   className="close-search"
+                  >Close</Link>
                   <div className="search-books-input-wrapper">
 
                     <input type="text"
@@ -51,14 +56,23 @@ class SearchPage extends React.Component {
                 <div className="search-books-results">
                   <ol className="books-grid">
                   {
-                    this.state.searchedBooks.map(searchedBook =>(
-                    <li key={searchedBook.id}>
-                    <Book
-                    book={searchedBook}
-                    moveShelf = {this.props.moveShelf}
-                    />
-                    </li>
-                  ))
+                    searchedBooks.map(searchedBook => {
+                      let shelf = 'none'
+                      this.props.books.map(book =>{
+                          book.id === searchedBook.id ? shelf = book.shelf : 'none';
+                      }
+                      )
+                      return(
+                        <li key={searchedBook.id}>
+                        <Book
+
+                        moveShelf ={this.props.moveShelf}
+                        book={searchedBook}
+                        shelf={shelf}
+                        />
+                        </li>
+                      )
+                    })
                 }
                   </ol>
                 </div>

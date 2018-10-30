@@ -5,7 +5,9 @@ import React, { Component } from 'react'
 class Book extends React.Component {
 
   render(){
+  let currentShelf ='none';
   let displayedThumbnail = this.props.book.imageLinks ? this.props.book.imageLinks.thumbnail: '';
+  let defaultValue ;
     return(
       <div>
       <div className="book">
@@ -16,6 +18,7 @@ class Book extends React.Component {
               onChange ={(event) => this.props.moveShelf(
                 this.props.book, event.target.value
               )}
+
               value={this.props.book.shelf}
             >
               <option value="move" disabled>Move to...</option>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import * as BooksAPI from './BooksAPI'
+import { Link } from 'react-router-dom'
+
 import Book from './Book'
 
 class MainPage extends React.Component {
@@ -76,6 +77,7 @@ console.log('BOOKS', this.props.books);
                     </li>
                 ))
               }
+
               </ol>
             </div>
           </div>
@@ -83,7 +85,9 @@ console.log('BOOKS', this.props.books);
           </div>
         </div>
         <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+          <Link
+          to= "/search"
+          >Add a book</Link>
         </div>
       </div>
       </div>
